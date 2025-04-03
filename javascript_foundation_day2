@@ -1,0 +1,43 @@
+
+//1. show clock in terminal so one can know the time
+function time_console(){
+    const clock=()=>{
+    console.log(Date().split(" ")[4]);
+    }
+
+    setInterval(clock,1000);
+}
+
+//2. count num seconds till zero 
+function count_seconds_using_setInterval(){
+    let num=3;
+   
+   const invalid_interval= setInterval(()=>{
+        console.log(num--);
+        if(num==-1){
+        clearInterval(invalid_interval);
+        }
+    },1*1000)
+
+
+}
+
+//3.ncalculate the time to execute a function before it is called and then executre incide settimeout;
+async function calculate_time_to_execute () {
+    let time_start=performance.now();
+    
+  function print(){
+   
+    console.log("hi naman");
+
+     let time_end = performance.now();
+      console.log((time_end-time_start)-3000+" ms"); //difference in execution time
+  }
+
+   await new Promise( resolve =()=>setTimeout(print,1*3000)
+);// settimeout for 3 sec
+  
+}
+calculate_time_to_execute()
+
+
